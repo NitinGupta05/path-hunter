@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - PathHunter Ultimate</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <!-- Brand: clickable home -->
+      <a href="index.html" class="brand" aria-label="PathHunter Home">
+        <i class="fas fa-route brand-icon"></i>
+        <div>
+          <h1>PathHunter</h1>
+          <span>Ultimate Visualizer</span>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Visualizer</a>
+        <a href="about.html" class="nav-link nav-active">About</a>
+      </nav>
+    </div>
+
+    <div class="controls-area">
+      <!-- Theme Toggle -->
+      <label class="theme-toggle" title="Toggle Dark Mode">
+        <input type="checkbox" id="themeSwitch" />
+        <div class="slider">
+          <i class="fas fa-sun"></i>
+          <i class="fas fa-moon"></i>
+        </div>
+      </label>
+    </div>
+  </header>
+
+  <main class="about-main">
+    <section class="about-card">
+      <!-- Back button on left -->
+      <a href="index.html" class="about-back-btn">
+        <i class="fas fa-arrow-left"></i>
+        <span>Back to visualizer</span>
+      </a>
+
+      <h2>What is PathHunter?</h2>
+      <p>
+        <strong>PathHunter Ultimate</strong> is an interactive pathfinding
+        visualizer. It lets you see how classic graph algorithms explore a grid,
+        step by step: which cells they visit, how they backtrack, and how they
+        construct a path from <strong>Start</strong> to <strong>Target</strong>.
+      </p>
+
+      <h3>Algorithms you can explore</h3>
+      <div class="about-algos">
+        <div class="about-algo-block">
+          <h4>Breadth-First Search (BFS)</h4>
+          <p>
+            BFS explores the grid <strong>level by level</strong>. On this
+            unweighted grid, the first time it reaches the target, it has found
+            a <strong>shortest path</strong> in terms of number of steps.
+          </p>
+          <ul>
+            <li><strong>Data structure:</strong> Queue (FIFO)</li>
+            <li><strong>Guarantee:</strong> Shortest path if one exists</li>
+            <li>
+              <strong>Use cases:</strong> Social networks, broadcasting,
+              reachability
+            </li>
+          </ul>
+        </div>
+
+        <div class="about-algo-block">
+          <h4>Depth-First Search (DFS)</h4>
+          <p>
+            DFS goes <strong>deep</strong> in one direction before backtracking.
+            It is more about exploration than optimality. On the grid, DFS can
+            produce long or zig-zag paths — this is
+            <strong>expected behavior</strong>, not a bug.
+          </p>
+          <ul>
+            <li><strong>Data structure:</strong> Stack (LIFO) / recursion</li>
+            <li><strong>Guarantee:</strong> Does not ensure shortest path</li>
+            <li>
+              <strong>Use cases:</strong> Maze generation, backtracking, cycle
+              detection
+            </li>
+          </ul>
+        </div>
+
+        <div class="about-algo-block">
+          <h4>A* (A-Star) Search</h4>
+          <p>
+            A* combines the <strong>cost so far</strong> from the start and a
+            <strong>heuristic estimate</strong> of the remaining distance to the
+            target. It focuses the search towards the goal instead of exploring
+            everywhere evenly.
+          </p>
+          <ul>
+            <li><strong>Score:</strong> F = G + H</li>
+            <li><strong>Heuristic here:</strong> Manhattan distance</li>
+            <li>
+              <strong>Use cases:</strong> Maps, games, robotics pathfinding
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>How to use the visualizer</h3>
+      <ul class="about-list">
+        <li>Use <strong>Pointer</strong> to drag Start and Target nodes.</li>
+        <li>Use <strong>Pencil</strong> to draw walls and obstacles.</li>
+        <li>Use <strong>Eraser</strong> to remove walls.</li>
+        <li>
+          Change <strong>Map themes</strong> to explore different visual
+          contexts (Abstract, Midnight City, Deep Jungle, Coastal Route).
+        </li>
+        <li>
+          Select an algorithm and click <strong>Visualize</strong> to watch it
+          in action.
+        </li>
+      </ul>
+
+      <p class="about-note">
+        PathHunter is built to help you <strong>see how algorithms think</strong>
+        — which nodes they expand, how they trade off exploration vs.
+        optimality, and what makes BFS, DFS, and A* behave so differently on the
+        same grid.
+      </p>
+
+      <div class="about-social">
+        <span>Connect:</span>
+        <a
+          href="https://github.com/NitinGupta05"
+          target="_blank"
+          rel="noopener"
+          title="GitHub"
+        >
+          <i class="fab fa-github"></i>
+        </a>
+        <a
+          href="https://www.linkedin.com"
+          target="_blank"
+          rel="noopener"
+          title="LinkedIn"
+        >
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a
+          href="https://www.instagram.com"
+          target="_blank"
+          rel="noopener"
+          title="Instagram"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>PathHunter Ultimate — Built to make pathfinding algorithms visual and intuitive.</p>
+    </footer>
+  </main>
+
+  <!-- Theme sync (same as home) -->
+  <script>
+    (function () {
+      const html = document.documentElement;
+      const switchEl = document.getElementById("themeSwitch");
+      const saved = localStorage.getItem("ph-theme");
+
+      if (saved === "dark") {
+        html.setAttribute("data-theme", "dark");
+        if (switchEl) switchEl.checked = true;
+      } else {
+        html.removeAttribute("data-theme");
+        if (switchEl) switchEl.checked = false;
+      }
+
+      if (switchEl) {
+        switchEl.addEventListener("change", (e) => {
+          if (e.target.checked) {
+            html.setAttribute("data-theme", "dark");
+            localStorage.setItem("ph-theme", "dark");
+          } else {
+            html.removeAttribute("data-theme");
+            localStorage.setItem("ph-theme", "light");
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

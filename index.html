@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PathHunter Ultimate - Algorithm Visualizer</title>
+
+  <!-- Font Awesome for icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <!-- Brand: clickable home -->
+      <a href="index.html" class="brand" aria-label="PathHunter Home">
+        <i class="fas fa-route brand-icon"></i>
+        <div>
+          <h1>PathHunter</h1>
+          <span>Ultimate Visualizer</span>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link nav-active">Visualizer</a>
+        <a href="about.html" class="nav-link">About</a>
+      </nav>
+    </div>
+
+    <div class="controls-area">
+      <!-- Theme Toggle -->
+      <label class="theme-toggle" title="Toggle Dark Mode">
+        <input type="checkbox" id="themeSwitch" />
+        <div class="slider">
+          <i class="fas fa-sun"></i>
+          <i class="fas fa-moon"></i>
+        </div>
+      </label>
+
+      <!-- Map Theme Selector -->
+      <select id="mapThemeSelect" title="Map Theme">
+        <option value="default">Map: Abstract</option>
+        <option value="city">Map: Midnight City</option>
+        <option value="jungle">Map: Deep Jungle</option>
+        <option value="water">Map: Coastal Route</option>
+      </select>
+
+      <!-- Tool Toolbar -->
+      <div class="toolbar">
+        <button
+          class="tool-btn active"
+          id="tool-pointer"
+          title="Pointer: Drag Start/Target"
+        >
+          <i class="fas fa-hand-pointer"></i>
+        </button>
+        <button
+          class="tool-btn"
+          id="tool-pencil"
+          title="Pencil: Draw Walls"
+        >
+          <i class="fas fa-pen"></i>
+        </button>
+        <button
+          class="tool-btn"
+          id="tool-eraser"
+          title="Eraser: Remove Walls"
+        >
+          <i class="fas fa-eraser"></i>
+        </button>
+      </div>
+
+      <!-- Algorithm & Maze Selectors -->
+      <select id="algoSelect" title="Algorithm">
+        <option value="bfs">Breadth-First Search</option>
+        <option value="dfs">Depth-First Search</option>
+        <option value="astar">A* (A-Star) Search</option>
+      </select>
+
+      <select id="mazeSelect" title="Patterns">
+        <option value="">Patterns...</option>
+        <option value="recursive">Recursive Maze</option>
+        <option value="spiral">Spiral Pattern</option>
+        <option value="random">Random Maze (DFS)</option>
+      </select>
+
+      <!-- Actions -->
+      <button class="btn-secondary" id="resetBtn" title="Clear Board">
+        <i class="fas fa-trash-alt"></i>
+      </button>
+      <button id="visualizeBtn" title="Visualize Algorithm">
+        <i class="fas fa-play"></i>
+        Visualize
+      </button>
+    </div>
+  </header>
+
+  <!-- Legend -->
+  <div class="legend-bar">
+    <div class="legend-item">
+      <div class="box" style="background: var(--start)"></div>
+      Start
+    </div>
+    <div class="legend-item">
+      <div class="box" style="background: var(--end)"></div>
+      Target
+    </div>
+    <div class="legend-item">
+      <div class="box" style="background: var(--wall)"></div>
+      Wall
+    </div>
+    <div class="legend-item">
+      <div class="box" style="background: var(--visited-bfs)"></div>
+      Visited (BFS)
+    </div>
+    <div class="legend-item">
+      <div class="box" style="background: var(--visited-dfs)"></div>
+      Visited (DFS)
+    </div>
+    <div class="legend-item">
+      <div class="box" style="background: var(--visited-astar)"></div>
+      Visited (A*)
+    </div>
+    <div class="legend-item">
+      <div class="box" style="background: var(--path)"></div>
+      Final Path
+    </div>
+  </div>
+
+  <main>
+    <!-- Grid -->
+    <div
+      class="grid-container tool-pointer"
+      id="gridContainer"
+      data-map="default"
+    >
+      <div id="grid"></div>
+    </div>
+
+    <!-- Info Panel -->
+    <section class="info-panel" id="infoPanel">
+      <div class="info-header">
+        <h3 id="algoTitle">Algorithm</h3>
+        <div id="algoTags" class="algo-tags"></div>
+      </div>
+
+      <div class="info-body">
+        <div class="algo-detail" id="algoDetailContent">
+          <!-- Filled by JS -->
+        </div>
+        <div class="run-stats">
+          <div class="stat-row">
+            <span class="stat-label">Status</span>
+            <span class="stat-value" id="statusValue">Idle</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Nodes Visited</span>
+            <span class="stat-value" id="visitedCount">0</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Path Length</span>
+            <span class="stat-value" id="pathLength">0</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>PathHunter Ultimate — Visualizing BFS, DFS & A* on interactive maps.</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
