@@ -4,7 +4,7 @@ An advanced pathfinding algorithm visualizer built using HTML, CSS, and JavaScri
 It provides an interactive way to understand how graph traversal algorithms work through real-time animations, dynamic grid interaction, and multiple visual themes — all running fully in the browser.
 
 🚀 Live Demo
-👉 https://nitinGupta05.github.io/pathhunter
+👉 https://nitingupta05.github.io/path-hunter/
 
 Features
 
