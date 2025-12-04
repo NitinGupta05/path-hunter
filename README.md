@@ -3,8 +3,7 @@ pathhunter
 An advanced pathfinding algorithm visualizer built using HTML, CSS, and JavaScript.
 It provides an interactive way to understand how graph traversal algorithms work through real-time animations, dynamic grid interaction, and multiple visual themes — all running fully in the browser.
 
-🚀 Live Demo
-👉 https://nitingupta05.github.io/path-hunter/
+Live Demo: https://nitingupta05.github.io/path-hunter/
 
 Features
 
@@ -36,7 +35,7 @@ UI & experience:
 - Dedicated About page with algorithm explanations
 - All logic runs client-side in pure JavaScript.
 
-🧰 Tech Stack
+Tech Stack
 
 HTML5 – structure
 CSS3 – styling, theming, animations, dark/light mode
@@ -45,7 +44,7 @@ Font Awesome – icons
 
 No frameworks or external libraries.
 
-📁 Folder Structure
+Folder Structure
 pathhunter/
 ├── index.html        # Main visualizer page
 ├── about.html        # About & algorithm explanation page
